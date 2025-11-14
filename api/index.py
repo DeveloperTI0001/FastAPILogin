@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Request
-from asgiref.wsgi import WsgiToAsgi
+# ELIMINAR ESTA LÍNEA, YA NO ES NECESARIA CON MANGUM:
+# from asgiref.wsgi import WsgiToAsgi
 from mangum import Mangum
 
 from src.middleware.verificarToken import VerificarToken
@@ -7,6 +8,8 @@ from src.routes.login import Login, LoginData
 from src.routes.registrar import Registrar, RegisterData
 from fastapi.middleware.cors import CORSMiddleware
 
+from fastapi import Depends
+from src.db.supabaseServerClient import get_supabase_client # Supongamos que aquí pones tu función
 
 app = FastAPI(
     title="API de Login",
@@ -28,9 +31,11 @@ def estado():
 
 @app.get("/verify")
 def verificar_token_endpoint(request: Request):
+    # Asegúrate de que esta función no accede al cliente de Supabase al inicio
     return VerificarToken(request)
 
 @app.post("/login")
+# Si Login() requiere el cliente de Supabase, debes usar Depends aquí:
 def login_endpoint(login_data: LoginData):
     return Login(login_data)
 
