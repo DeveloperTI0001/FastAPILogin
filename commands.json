@@ -1,5 +1,6 @@
 {
     "comandoIniciarLocal": "python -m uvicorn api.index:app --reload",
+    "DespliegueVercel": "https://fast-api-login-six.vercel.app/",
     "comandoIniciarVercel": "No requiere comando",
     "instalarLibrerias": {
         "comando": "pip install",

@@ -31,5 +31,5 @@ def login_endpoint(login_data: LoginData):
     return Login(login_data)
 
 @app.post("/registrar")
-def registrar_endpoint(register_data: RegisterData):
+def registrar_brigadista_endpoint(register_data: RegisterData):
     return Registrar(register_data)

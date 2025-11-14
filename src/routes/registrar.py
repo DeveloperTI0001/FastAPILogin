@@ -37,6 +37,7 @@ def Registrar(register_data: RegisterData):
             "message": "Usuario creado con éxito.",
             "user": response.user,
         }
+    
     except HTTPException as e:
         raise e
     except Exception as err:
