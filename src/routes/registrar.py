@@ -1,6 +1,6 @@
 from fastapi import HTTPException
 from fastapi.responses import JSONResponse
-from src.db.supabaseServerClient import get_supabase_client
+from src.db.supabaseServerClient import supabasee
 from pydantic import BaseModel
 from typing import Dict, Optional
 
@@ -24,7 +24,7 @@ def Registrar(register_data: RegisterData):
 
         pass_final = password or contraseña
 
-        response = get_supabase_client().auth.admin.create_user(
+        response = supabasee.auth.admin.create_user(
             {
                 "email": correo.strip().lower(),
                 "password": pass_final,

@@ -1,6 +1,6 @@
 from fastapi import Request, HTTPException
 from fastapi.responses import JSONResponse
-from src.db.supabaseServerClient import get_supabase_client
+from src.db.supabaseServerClient import supabasee
 
 def VerificarToken(request: Request):
     try:
@@ -9,7 +9,7 @@ def VerificarToken(request: Request):
         if not token:
             raise HTTPException(status_code=401, detail="Token requerido")
 
-        response = get_supabase_client().auth.get_user(token)
+        response = supabasee.auth.get_user(token)
         
         # Accede directamente a los atributos del objeto response
         if response.user is None:

@@ -1,5 +1,5 @@
 {
-    "comandoIniciar": "python -m uvicorn index:app --reload",
+    "comandoIniciar": "python -m uvicorn api.index:app --reload",
     "instalarLibrerias": {
         "comando": "pip install",
         "librerias": {

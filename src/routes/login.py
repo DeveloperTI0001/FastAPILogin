@@ -1,6 +1,6 @@
 from fastapi import Request, HTTPException
 from fastapi.responses import JSONResponse
-from src.db.supabaseServerClient import get_supabase_client
+from src.db.supabaseServerClient import supabasee
 from pydantic import BaseModel
 
 class LoginData(BaseModel):
@@ -14,7 +14,7 @@ def Login(request: Request):
         if not email or not password:
             raise HTTPException(status_code=400, detail="Email y password requeridos")
 
-        response = get_supabase_client().auth.sign_in_with_password({
+        response = supabasee.auth.sign_in_with_password({
             "email": email,
             "password": password
         })
