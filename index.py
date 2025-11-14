@@ -24,3 +24,4 @@ def login_endpoint(login_data: LoginData):
 @app.post("/registrar")
 def registrar_endpoint(register_data: RegisterData):
     return Registrar(register_data)
+
