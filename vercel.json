@@ -1,5 +1,5 @@
 {
-    "outputDirectory": ".",
+    "outputDirectory": "",
     "framework": "fastapi",
-    "devCommand": "python -m uvicorn index:app --reload"
+    "devCommand": "uvicorn **api.index:app** --reload --host 0.0.0.0 --port 3000"
 }
