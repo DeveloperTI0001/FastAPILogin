@@ -1,5 +1,6 @@
 {
-    "comandoIniciar": "python -m uvicorn api.index:app --reload",
+    "comandoIniciarLocal": "python -m uvicorn api.index:app --reload",
+    "comandoIniciarVercel": "No requiere comando",
     "instalarLibrerias": {
         "comando": "pip install",
         "librerias": {

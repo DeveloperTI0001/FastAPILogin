@@ -1,12 +1,4 @@
-# requirements.txt
-fastapi==0.108.0
-uvicorn==0.27.0.post1
-pydantic==2.5.3
-python-jose[cryptography]==3.3.0
-passlib[bcrypt]==1.7.4
-python-dotenv==1.0.1
-psycopg[binary,pool]
-mangum
-# AÑADE ESTA LÍNEA FALTANTE:
-asgiref
+fastapi
+pydantic
+python-multipart
 supabase
