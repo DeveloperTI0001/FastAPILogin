@@ -12,6 +12,9 @@ app = FastAPI(
         "name": "Carlos Pinto",
         "email": "cpinto5@udi.edu.co",
     },
+    swagger_ui_parameters={
+        "displayRequestDuration": True,      # Muestra tiempo de respuesta
+    }
 )
 
 app.add_middleware(

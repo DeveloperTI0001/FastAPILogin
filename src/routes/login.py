@@ -7,6 +7,17 @@ class LoginData(BaseModel):
     email: str
     password: str
 
+    model_config = {
+        "json_schema_extra": {
+            "examples": [
+                {
+                    "email": "martin5435412@gmail.com",
+                    "password": "123456"
+                }
+            ]
+        }
+    }
+
 def Login(request: Request):
     try:
         email = request.email.strip().lower()
