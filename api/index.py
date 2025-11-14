@@ -1,4 +1,7 @@
 from fastapi import FastAPI, Request
+from asgiref.wsgi import WsgiToAsgi
+from mangum import Mangum
+
 from src.middleware.verificarToken import VerificarToken
 from src.routes.login import Login, LoginData
 from src.routes.registrar import Registrar, RegisterData
@@ -34,3 +37,6 @@ def login_endpoint(login_data: LoginData):
 @app.post("/registrar")
 def registrar_endpoint(register_data: RegisterData):
     return Registrar(register_data)
+
+# Adaptador para serverless (Vercel / AWS Lambda)
+handler = Mangum(app)
