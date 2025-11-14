@@ -5,9 +5,13 @@ from src.routes.registrar import Registrar, RegisterData
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
-    title="API de Login",
-    description="Permite gestionar el Auth de usuarios",
-    version="2.0.0"
+    title = "API de Login",
+    description = "Permite gestionar el Auth de usuarios",
+    version = "2.0.0",
+    contact = {
+        "name": "Carlos Pinto",
+        "email": "cpinto5@udi.edu.co",
+    },
 )
 
 app.add_middleware(
@@ -18,18 +22,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/")
+@app.get("/", description="Página principal del backend para validar si está funcionando.")
 def estado():
     return {"message": "🚀 Backend de Login activo"}
 
-@app.get("/verify")
+@app.get("/verify", description="Para validar el JWT del usuario.")
 def verificar_token_endpoint(request: Request):
     return VerificarToken(request)
 
-@app.post("/login")
+@app.post("/login", description="Para validar las credenciales del usuario.")
 def login_endpoint(login_data: LoginData):
     return Login(login_data)
 
-@app.post("/registrar")
+@app.post("/registrar", description="Para registrar un usuario en el Auth de Supabase.")
 def registrar_brigadista_endpoint(register_data: RegisterData):
     return Registrar(register_data)
