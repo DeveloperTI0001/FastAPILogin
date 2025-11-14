@@ -1,8 +1,8 @@
 {
-    "framework": null, 
+    "framework": null,
     "functions": {
         "api/index.py": {
-            "runtime": "python3.11"
+            "runtime": "python311" 
         }
     },
     "routes": [
