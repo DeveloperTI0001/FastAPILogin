@@ -11,11 +11,11 @@ app = FastAPI(
 
 @app.get("/")
 def estado():
-    return "🚀 Backend de Login activo"
+    return {"message": "🚀 Backend de Login activo"}
 
 @app.get("/verify")
-async def verificar_token_endpoint(request: Request):
-    return await VerificarToken(request)
+def verificar_token_endpoint(request: Request):
+    return VerificarToken(request)
 
 @app.post("/login")
 def login_endpoint(login_data: LoginData):
