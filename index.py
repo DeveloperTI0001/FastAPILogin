@@ -1,0 +1,26 @@
+from fastapi import FastAPI, Request
+from src.middleware.verificarToken import VerificarToken
+from src.routes.login import Login, LoginData
+from src.routes.registrar import Registrar, RegisterData
+
+app = FastAPI(
+    title="API de Login",
+    description="Permite gestionar el Auth de usuarios",
+    version="2.0.0"
+)
+
+@app.get("/")
+def estado():
+    return "🚀 Backend de Login activo"
+
+@app.get("/verify")
+async def verificar_token_endpoint(request: Request):
+    return await VerificarToken(request)
+
+@app.post("/login")
+def login_endpoint(login_data: LoginData):
+    return Login(login_data)
+
+@app.post("/registrar")
+def registrar_endpoint(register_data: RegisterData):
+    return Registrar(register_data)

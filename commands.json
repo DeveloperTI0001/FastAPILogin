@@ -1,0 +1,13 @@
+{
+    "comandoIniciar": "python -m uvicorn index:app --reload",
+    "instalarLibrerias": {
+        "comando": "pip install",
+        "librerias": {
+            "fastapi": "pip install \"fastapi[standard]\" \"uvicorn[standard]\"",
+            "supabase": "pip install supabase"
+        }
+    },
+    "tenerEnCuenta": {
+        "comandoIniciar": "El index:app depende del archivo que va a iniciar primero, en este caso index.py y app es la ruta @app"
+    }
+}
