@@ -24,10 +24,11 @@ def Login(request: Request):
             "session": response.session,
             "user": response.user,
         }
+    
     except HTTPException as e:
         raise e
     except Exception as err:
         if "Invalid login credentials" in str(err):
-            raise HTTPException(status_code=401, detail="Credenciales inválidas")
+            raise HTTPException(status_code=401, content={"error": "Credenciales inválidas"})
     
         return JSONResponse(status_code=500, content={"error": "Error en el servidor"})
