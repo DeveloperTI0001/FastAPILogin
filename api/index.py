@@ -20,12 +20,12 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://react-vercel-deploy-brown.vercel.app", "https://brigada-informe-ifn.vercel.app/"],
+    allow_origins=["http://localhost:5173", "https://react-vercel-deploy-brown.vercel.app", "https://brigada-informe-ifn.vercel.app/"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-# 🔥 Detectar entorno al iniciar
+# Detectar entorno al iniciar
 hostname = socket.gethostname()
 local_ip = socket.gethostbyname(hostname)
 
@@ -34,10 +34,13 @@ print("Iniciando FastAPI desde:", local_ip)
 # Si FastAPI se levanta en localhost no se activa el middleware
 # Lo hizo para poder ir configurando en localhost y hacer las pruebas
 if local_ip not in ("192.168.56.1", "0.0.0.0"):
-    print("🔐 Producción: Activando middleware de VerificarToken")
+    print("En Producción: Activando middleware de VerificarToken")
     app.add_middleware(VerificarToken)
 else:
-    print("🧪 Localhost: NO se activa middleware de VerificarToken")
+    print("En Localhost: NO se activa middleware de VerificarToken")
+
+
+
 
 
 @app.get("/", description="Página principal del backend para validar si está funcionando.")

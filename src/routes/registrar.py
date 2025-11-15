@@ -7,7 +7,6 @@ from typing import Dict, Optional
 class RegisterData(BaseModel):
     correo: str
     contraseña: Optional[str] = None
-    password: Optional[str] = None
     user_metadata: Dict = {}
     app_metadata: Dict = {}
 
@@ -15,19 +14,16 @@ def Registrar(register_data: RegisterData):
     try:
         correo = register_data.correo
         contraseña = register_data.contraseña
-        password = register_data.password
         user_metadata = register_data.user_metadata
         app_metadata = register_data.app_metadata
 
-        if not correo or not (contraseña or password):
+        if not correo or not contraseña:
             raise HTTPException(status_code=400, detail="Correo y contraseña requeridos")
-
-        pass_final = password or contraseña
 
         response = supabasee.auth.admin.create_user(
             {
                 "email": correo.strip().lower(),
-                "password": pass_final,
+                "password": contraseña,
                 "user_metadata": user_metadata,
                 "app_metadata": app_metadata
             }
