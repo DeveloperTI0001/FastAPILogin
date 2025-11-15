@@ -29,7 +29,7 @@ app.add_middleware(
 hostname = socket.gethostname()
 local_ip = socket.gethostbyname(hostname)
 
-print("➡ Iniciando FastAPI desde:", local_ip)
+print("Iniciando FastAPI desde:", local_ip)
 
 # Si FastAPI se levanta en localhost no se activa el middleware
 # Lo hizo para poder ir configurando en localhost y hacer las pruebas
