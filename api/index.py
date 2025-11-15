@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request
-from src.middleware.verificarToken import VerificarToken
+
 from src.routes.login import Login, LoginData
 from src.routes.registrar import Registrar, RegisterData
 from fastapi.middleware.cors import CORSMiddleware
@@ -25,13 +25,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get("/", description="Página principal del backend para validar si está funcionando.")
 def estado():
     return {"message": "🚀 Backend de Login activo"}
 
-@app.get("/verify", description="Para validar el JWT del usuario.")
-def verificar_token_endpoint(request: Request):
-    return VerificarToken(request)
+#@app.get("/verify", description="Para validar el JWT del usuario.")
+#def verificar_token_endpoint(request: Request):
+#    return VerificarToken(request)
 
 @app.post("/login", description="Para validar las credenciales del usuario.")
 def login_endpoint(login_data: LoginData):
