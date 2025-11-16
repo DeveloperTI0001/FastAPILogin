@@ -12,7 +12,7 @@ class RegisterData(BaseModel):
 
 def Registrar(register_data: RegisterData):
     try:
-        correo = register_data.correo
+        correo = register_data.correo.strip().lower()
         contraseña = register_data.contraseña
         user_metadata = register_data.user_metadata
         app_metadata = register_data.app_metadata
@@ -22,7 +22,7 @@ def Registrar(register_data: RegisterData):
 
         response = supabasee.auth.admin.create_user(
             {
-                "email": correo.strip().lower(),
+                "email": correo,
                 "password": contraseña,
                 "user_metadata": user_metadata,
                 "app_metadata": app_metadata,
