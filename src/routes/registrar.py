@@ -25,7 +25,9 @@ def Registrar(register_data: RegisterData):
                 "email": correo.strip().lower(),
                 "password": contraseña,
                 "user_metadata": user_metadata,
-                "app_metadata": app_metadata
+                "app_metadata": app_metadata,
+                # Por ahora ya que no es tan importante
+                "email_confirm": True
             }
         )
 
