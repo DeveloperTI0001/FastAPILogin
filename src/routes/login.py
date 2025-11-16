@@ -40,7 +40,7 @@ def Login(request: Request):
         raise e
     except Exception as err:
         print(err)
-        if "Invalid login credentials" in str(err):
+        if "Invalid login credentials" or "Email not confirmed" in str(err):
             raise HTTPException(status_code=401, detail="Credenciales inválidas")
     
         return JSONResponse(status_code=500, content={"error": "Error en el servidor"})
