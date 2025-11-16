@@ -39,6 +39,7 @@ def Login(request: Request):
     except HTTPException as e:
         raise e
     except Exception as err:
+        print(err)
         if "Invalid login credentials" in str(err):
             raise HTTPException(status_code=401, detail="Credenciales inválidas")
     
