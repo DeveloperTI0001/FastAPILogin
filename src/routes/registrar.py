@@ -45,4 +45,4 @@ def Registrar(register_data: RegisterData):
         if "already exists" in error_str.lower() or "duplicate" in error_str.lower():
             raise HTTPException(status_code=409, detail="El correo ya está registrado")
         
-        return JSONResponse(status_code=500, content={"error": str(err)})
+        return JSONResponse(status_code=500, content={"error": str(err), "correo": correo})
