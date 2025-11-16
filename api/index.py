@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from src.middleware.verificarToken import VerificarToken
 from src.routes.login import Login, LoginData
 from src.routes.registrar import Registrar, RegisterData
+from src.routes.eliminar_usuario import EliminarUsuario, uuid
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
@@ -40,3 +41,7 @@ def login_endpoint(login_data: LoginData):
 @app.post("/registrar", description="Para registrar un usuario en el Auth de Supabase.")
 def registrar_brigadista_endpoint(register_data: RegisterData):
     return Registrar(register_data)
+
+@app.post("/eliminar-usuario", description="Para eliminar a un usuario del Auth")
+def eliminar_usuario(uuid : uuid):
+    return EliminarUsuario(uuid)
